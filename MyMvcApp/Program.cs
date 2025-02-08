@@ -1,8 +1,19 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-builder.Services.AddApplicationInsightsTelemetry();
+// Додаємо більше діагностичного логування
+var connectionString = builder.Configuration["ApplicationInsights:ConnectionString"];
+Console.WriteLine("=== Application Insights Configuration ===");
+Console.WriteLine($"Connection String: {connectionString}");
+Console.WriteLine($"Is null or empty: {string.IsNullOrEmpty(connectionString)}");
+
+// Додаємо явну конфігурацію
+builder.Services.AddApplicationInsightsTelemetry(options =>
+{
+    options.EnableAdaptiveSampling = false;
+    options.EnableQuickPulseMetricStream = true;
+    options.ConnectionString = connectionString;
+    options.InstrumentationKey = "d56d3dd9-2b76-4525-bcbd-32d87ddc8abb"; // Додаємо явно
+});
 
 var app = builder.Build();
 
