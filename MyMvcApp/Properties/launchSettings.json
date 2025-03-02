@@ -13,14 +13,15 @@
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5285",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5285"
       },
       "dotnetRunMessages": true
     },
     "https": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7050;http://localhost:5285",
+      "applicationUrl": "https://localhost:7050;https://localhost:5285",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
